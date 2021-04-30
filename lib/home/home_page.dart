@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/form_widget.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -52,73 +54,18 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Calculadora de imc"),
         centerTitle: true,
+        backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(icon: Icon(Icons.refresh), onPressed: _resetFields),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Icon(
-                Icons.person,
-                size: 120,
-              ),
-              TextFormField(
-                // ignore: missing_return
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Insira um Peso valido.";
-                  }
-                },
-                controller: weightController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: "Peso em kg",
-                  labelStyle: TextStyle(),
-                ),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 25.0),
-              ),
-              TextFormField(
-                // ignore: missing_return
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Insira uma Altura valida.";
-                  }
-                },
-                controller: heightController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: "Altura em cm",
-                  labelStyle: TextStyle(),
-                ),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 25.0),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Container(
-                  height: 50.0,
-                  child: RaisedButton(
-                    onPressed: _calculate,
-                    child: Text(
-                      "Calcular!",
-                      style: TextStyle(fontSize: 25.0),
-                    ),
-                  ),
-                ),
-              ),
-              Text(
-                _infoText,
-                textAlign: TextAlign.center,
-              )
-            ],
-          ),
-        ),
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: FormWidget(
+        formKey: _formKey,
+        weightController: weightController,
+        heightController: heightController,
+        infoText: _infoText,
+        calculate: _calculate,
       ),
     );
   }
