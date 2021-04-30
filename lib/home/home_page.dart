@@ -1,20 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: Home(),
-    );
-  }
-}
-
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -67,12 +52,10 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Calculadora de imc"),
         centerTitle: true,
-        backgroundColor: Colors.green,
         actions: [
           IconButton(icon: Icon(Icons.refresh), onPressed: _resetFields),
         ],
       ),
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: Form(
@@ -83,7 +66,6 @@ class _HomeState extends State<Home> {
               Icon(
                 Icons.person,
                 size: 120,
-                color: Colors.green,
               ),
               TextFormField(
                 // ignore: missing_return
@@ -96,10 +78,10 @@ class _HomeState extends State<Home> {
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: "Peso em kg",
-                  labelStyle: TextStyle(color: Colors.green),
+                  labelStyle: TextStyle(),
                 ),
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: TextStyle(fontSize: 25.0),
               ),
               TextFormField(
                 // ignore: missing_return
@@ -112,10 +94,10 @@ class _HomeState extends State<Home> {
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: "Altura em cm",
-                  labelStyle: TextStyle(color: Colors.green),
+                  labelStyle: TextStyle(),
                 ),
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.green, fontSize: 25.0),
+                style: TextStyle(fontSize: 25.0),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
@@ -125,9 +107,8 @@ class _HomeState extends State<Home> {
                     onPressed: _calculate,
                     child: Text(
                       "Calcular!",
-                      style: TextStyle(color: Colors.white, fontSize: 25.0),
+                      style: TextStyle(fontSize: 25.0),
                     ),
-                    color: Colors.green,
                   ),
                 ),
               ),
